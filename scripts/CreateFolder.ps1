@@ -1,3 +1,9 @@
+<#
+    .DESCRIPTION
+        Create Folder (check if exists)
+    .NOTES
+        Create by Matías Creimerman
+#>
 [CmdletBinding()]
 Param(
     [Parameter(Mandatory = $True)]
@@ -9,10 +15,10 @@ if (-not (Test-Path -LiteralPath $Directory)) {
         New-Item -Path $Directory -ItemType Directory -ErrorAction Stop | Out-Null;
     }
     catch {
-        Write-Error -Message "Unable to create directory '$Directory'. Error was: $_" -ErrorAction Stop;
+        Write-Error -Message "Unable to create directory '$Directory'. Error: $_" -ErrorAction Stop;
     }
-    "Successfully created directory '$Directory'.";
+    "Successfully created! '$Directory'.";
 }
 else {
-    "Directory already existed";
+    "Directory already exists!";
 }
